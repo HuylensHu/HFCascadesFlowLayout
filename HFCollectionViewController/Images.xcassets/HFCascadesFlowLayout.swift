@@ -29,7 +29,8 @@ class HFCascadesFlowLayout: UICollectionViewLayout {
 
     }
 
-    override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes! {
+    override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) ->
+        UICollectionViewLayoutAttributes! {
         let attribute = UICollectionViewLayoutAttributes(forCellWithIndexPath: indexPath)
         let columnWidth:CGFloat = (UIScreen.mainScreen().bounds.width - CGFloat(defaultColumnCount + 1) * defaultColumnMargin) / CGFloat(defaultColumnCount)
         for (index, oldHeight) in enumerate(currentRowHeight){
@@ -43,6 +44,11 @@ class HFCascadesFlowLayout: UICollectionViewLayout {
         var height:CGFloat = CGFloat(arc4random_uniform(80)) + CGFloat(50)
         attribute.frame = CGRectMake(x, y, width, height)
         currentRowHeight[currentColumnIndex] = y + height;
+        for (index, oldHeight) in enumerate(currentRowHeight){
+            if oldHeight >= currentRowHeight[currentColumnIndex]{
+                currentColumnIndex = index
+            }
+        }
         return attribute
     }
     override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject]? {

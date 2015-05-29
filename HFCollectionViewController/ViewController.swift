@@ -30,7 +30,7 @@ class ViewController: UIViewController, UICollectionViewDataSource {
         // Dispose of any resources that can be recreated.
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as UICollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! UICollectionViewCell
         let red:CGFloat = CGFloat(arc4random_uniform(256))/255
         let green:CGFloat = CGFloat(arc4random_uniform(256))/255
         let blue:CGFloat = CGFloat(arc4random_uniform(256))/255
